@@ -1,0 +1,317 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Portfolio of Your Name — web developer, designer, problem solver.">
+  <style>
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1220;
+      --muted:#9aa7bd;
+      --accent:#7c3aed; /* violet */
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,#071025 0%, var(--bg) 100%);
+      color:#e6eef8; -webkit-font-smoothing:antialiased;line-height:1.5;
+      padding:32px;display:flex;justify-content:center;
+    }
+    .wrap{width:100%;max-width:var(--maxw)}header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.brand{display:flex;gap:16px;align-items:center}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#4f46e5);display:flex;align-items:center;justify-content:center;font-weight:700}
+.logo span{font-size:20px}
+nav{display:flex;gap:12px}
+nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
+nav a:hover{color:#fff;background:var(--glass)}
+
+main{display:grid;grid-template-columns: 1fr 360px;gap:28px}
+@media (max-width:980px){main{grid-template-columns: 1fr;}}
+
+/* Left column */
+.hero{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+.hero .greet{display:flex;gap:18px;align-items:center}
+.avatar{width:96px;height:96px;border-radius:16px;background:linear-gradient(180deg,#111827,#0b1220);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px}
+h1{margin:0 0 6px 0;font-size:28px}
+p.lead{margin:0;color:var(--muted)}
+
+.skills{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 12px;background:rgba(255,255,255,0.02);border-radius:999px;font-size:13px;color:var(--muted)}
+
+.section{margin-top:20px}
+.section h2{margin:0 0 12px 0;font-size:18px}
+
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:700px){.projects{grid-template-columns:1fr}}
+
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+.project-figure{height:120px;border-radius:10px;background:linear-gradient(135deg,#0b1220,#081025);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+.project-actions{display:flex;gap:8px;margin-top:10px}
+.btn{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;border:none;color:var(--muted);cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#4f46e5);color:white}
+
+/* Right column */
+aside{position:relative}
+.profile-card{position:sticky;top:32px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03)}
+.profile-card h3{margin:0}
+.contact-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.contact-item{display:flex;gap:8px;align-items:center;color:var(--muted)}
+
+footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+/* Modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center}
+.modal{background:#071425;padding:20px;border-radius:12px;max-width:720px;width:94%}
+.close{background:none;border:0;color:var(--muted);font-size:18px;cursor:pointer}
+
+/* contact form */
+form{display:flex;flex-direction:column;gap:8px}
+input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:10px;border-radius:8px;color:inherit}
+textarea{min-height:120px;resize:vertical}
+.muted{color:var(--muted);font-size:13px}
+
+/* small utilities */
+.row{display:flex;gap:8px;align-items:center}
+.tiny{font-size:12px;color:var(--muted)}
+
+/* animations */
+.fade-in{animation:fadeIn .6s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><span>YN</span></div>
+        <div>
+          <div style="font-weight:700">iswarya</div>
+          <div class="tiny">Web Developer • UI/UX Enthusiast</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button class="btn" id="themeToggle" title="Toggle theme">Theme</button>
+      </nav>
+    </header><main>
+  <section>
+    <div class="hero fade-in">
+      <div class="greet">
+        <div class="avatar">YN</div>
+        <div>
+          <h1>Hi — I'm <span id="nameInline">iswarya</span></h1>
+          <p class="lead">I build modern, accessible websites and delightful user experiences. I solve problems using HTML, CSS and JavaScript.</p>
+          <div class="skills" id="skills">
+            <div class="chip">HTML</div>
+            <div class="chip">CSS</div>
+            <div class="chip">JavaScript</div>
+            <div class="chip">React</div>
+            <div class="chip">Responsive Design</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="about">
+        <h2>About me</h2>
+        <div class="card">
+          <p class="muted">I'm a front-end developer focused on crafting simple &amp; accessible interfaces. I love turning ideas into pixel-perfect experiences and writing clear, maintainable code.</p>
+          <div class="row" style="margin-top:12px">
+            <button class="btn primary" id="downloadCV">Download CV</button>
+            <button class="btn" id="openProj">View Projects</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Featured projects</h2>
+        <div class="projects" id="projects">
+          <article class="card">
+            <div class="project-figure">Project A — Dashboard</div>
+            <h3 style="margin:10px 0 0 0">Analytics Dashboard</h3>
+            <p class="muted">Interactive data dashboard with charts and filters.</p>
+            <div class="project-actions">
+              <button class="btn" data-project="Analytics Dashboard" onclick="openModal(event)">Details</button>
+              <button class="btn primary" onclick="visitProject('https://example.com')">Live</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="project-figure">Project B — E‑commerce</div>
+            <h3 style="margin:10px 0 0 0">Shop UI Kit</h3>
+            <p class="muted">Reusable components and a fast checkout flow.</p>
+            <div class="project-actions">
+              <button class="btn" data-project="Shop UI Kit" onclick="openModal(event)">Details</button>
+              <button class="btn primary" onclick="visitProject('https://example.com')">Live</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="project-figure">Project C — Landing</div>
+            <h3 style="margin:10px 0 0 0">Landing Page</h3>
+            <p class="muted">Fast, responsive marketing page with A/B tested content.</p>
+            <div class="project-actions">
+              <button class="btn" data-project="Landing Page" onclick="openModal(event)">Details</button>
+              <button class="btn primary" onclick="visitProject('https://example.com')">Live</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="project-figure">Project D — Tool</div>
+            <h3 style="margin:10px 0 0 0">Tiny Tool</h3>
+            <p class="muted">A small productivity tool solving a specific workflow problem.</p>
+            <div class="project-actions">
+              <button class="btn" data-project="Tiny Tool" onclick="openModal(event)">Details</button>
+              <button class="btn primary" onclick="visitProject('https://example.com')">Live</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Experience</h2>
+        <div class="card">
+          <strong>Frontend Developer</strong> — Company XYZ <span class="tiny">• 2022–Present</span>
+          <p class="muted" style="margin:8px 0 0 0">Working on performant UI, component libraries, and accessibility improvements across the product.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <aside>
+    <div class="profile-card fade-in">
+      <h3>iswarya</h3>
+      <div class="tiny">Web Developer</div>
+      <p class="muted" style="margin-top:10px">Based in City, Country — available for freelance & full-time roles.</p>
+
+      <div class="contact-list">
+        <div class="contact-item"><strong>Email:</strong>&nbsp;<span class="muted">youremail@example.com</span></div>
+        <div class="contact-item"><strong>Phone:</strong>&nbsp;<span class="muted">+91 98765 43210</span></div>
+        <div class="contact-item"><strong>Location:</strong>&nbsp;<span class="muted">City, Country</span></div>
+      </div>
+
+      <div style="margin-top:12px">
+        <a class="btn" href="#contact">Message</a>
+        <a class="btn" href="#projects">See work</a>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="year"></span> iswarya • Built with HTML/CSS/JS
+    </footer>
+  </aside>
+</main>
+
+<!-- modal -->
+<div id="modalRoot" class="modal-backdrop" role="dialog" aria-hidden="true">
+  <div class="modal" role="document">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <strong id="modalTitle">Project</strong>
+      <button class="close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modalBody" style="margin-top:10px" class="muted">Project details go here.</div>
+  </div>
+</div>
+
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <div class="card">
+    <form id="contactForm" onsubmit="return handleContact(event)">
+      <input id="name" placeholder="Your name" required>
+      <input id="email" type="email" placeholder="Email" required>
+      <textarea id="message" placeholder="Message" required></textarea>
+      <div class="row">
+        <button class="btn primary" type="submit">Send message</button>
+        <div id="formStatus" class="muted">I'll reply within 2–3 business days.</div>
+      </div>
+    </form>
+  </div>
+</section>
+
+  </div>  <script>
+    // small helpers & interactivity
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // theme toggle (simple inversion)
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', ()=>{
+      if(document.documentElement.style.getPropertyValue('--bg') === '#0f1724'){
+        // light-ish theme
+        document.documentElement.style.setProperty('--bg','#f6f8fb');
+        document.documentElement.style.setProperty('--card','#ffffff');
+        document.documentElement.style.setProperty('--muted','#475569');
+        document.documentElement.style.setProperty('--accent','#0ea5a3');
+        document.documentElement.style.setProperty('--glass','rgba(2,6,23,0.04)');
+        document.body.style.color='#061124';
+      } else {
+        // revert dark
+        document.documentElement.style.setProperty('--bg','#0f1724');
+        document.documentElement.style.setProperty('--card','#0b1220');
+        document.documentElement.style.setProperty('--muted','#9aa7bd');
+        document.documentElement.style.setProperty('--accent','#7c3aed');
+        document.documentElement.style.setProperty('--glass','rgba(255,255,255,0.03)');
+        document.body.style.color='';
+      }
+    });
+
+    // modal
+    const modal = document.getElementById('modalRoot');
+    function openModal(e){
+      const project = e.currentTarget.dataset.project || 'Project';
+      document.getElementById('modalTitle').textContent = project;
+      document.getElementById('modalBody').textContent = project + ' — This is a short description. Add technologies used, your role, and a link to code or live demo.';
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){modal.style.display='none';modal.setAttribute('aria-hidden','true')}
+    modal.addEventListener('click', (ev)=>{ if(ev.target===modal) closeModal() })
+
+    // contact form (no backend) — stub with validation
+    function handleContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      const status = document.getElementById('formStatus');
+      if(!name||!email||!msg){ status.textContent='Please fill everything.'; return false }
+      status.textContent = 'Thanks ' + name + '! This demo does not send emails. To accept messages, connect a backend or a form service (Formspree, Getform).';
+      return false;
+    }
+
+    // stub functions
+    function visitProject(url){
+      // in a real site you'll link to the live demo or repo; here we open in new tab
+      window.open(url,'_blank');
+    }
+
+    // quick CV download (generated blob)
+    document.getElementById('downloadCV').addEventListener('click', ()=>{
+      const cv = `Your Name\nWeb Developer\n\nExperience:\n- Frontend Dev at Company XYZ\n\nSkills:\n- HTML, CSS, JavaScript`;
+      const blob = new Blob([cv],{type:'text/plain'});
+      const a = document.createElement('a');
+      a.href=URL.createObjectURL(blob);
+      a.download = 'YourName_CV.txt';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    // small progressive enhancement: smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+      })
+    });
+  </script></body>
+</html>
